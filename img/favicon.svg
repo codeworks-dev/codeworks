@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- 배경: 둥근 모서리의 Deep Indigo -->
+  <rect width="120" height="120" rx="28" fill="#4338ca"/>
+  
+  <!-- 상하 완벽하게 대칭(Symmetrical)을 이루는 C 라인 -->
+  <path d="M 83,36 L 59,36 C 45,36 37,46 37,60 C 37,74 45,84 59,84 L 83,84" 
+        fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+        
+  <!-- 아래쪽 획 끝을 정확히 덮으며 포인트가 되는 초록색 픽셀 -->
+  <rect x="76" y="77" width="14" height="14" rx="3" fill="#10b981" />
+</svg>
