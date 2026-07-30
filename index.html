@@ -18,8 +18,8 @@
   <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <script type="module" crossorigin src="./assets/main-CutQyCPK.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-BxClM7pZ.css">
+  <script type="module" crossorigin src="./assets/main-BgaSydeW.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-Bw9UdTvg.css">
 </head>
 
 <body>
@@ -31,6 +31,7 @@
     <nav class="header__nav">
       <a href="#about">서비스 특징</a>
       <a href="#portfolio">포트폴리오</a>
+      <a href="#pricing">예상 견적</a>
       <a href="#process">작업 과정</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -171,7 +172,7 @@
       </div>
     </section>
 
-    <!-- 5. Portfolio Section (💡 아카이브 버튼 제거 및 '자세히 보기' 워딩 적용) -->
+    <!-- 5. Portfolio Section -->
     <section id="portfolio" class="section portfolio">
       <div class="container">
         <div class="portfolio__header reveal-up">
@@ -403,9 +404,34 @@
           <p>Figma 시안을 완벽한 웹 생태계로 전환하는<br />프리미엄 전문 퍼블리싱 스튜디오.</p>
         </div>
         <div class="footer__contact-info">
-          <p><strong>Email</strong> : codeworks-dev@naver.com</p>
-          <p><strong>Kakao</strong> : @codewave_web</p>
-          <p><strong>Business Hours</strong> : 평일 09:00 - 18:00 (주말/공휴일 휴무)</p>
+          <!-- 💡 1. 이메일 (mailto 적용) -->
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <a href="mailto:codeworks-dev@naver.com" title="이메일 보내기">codeworks-dev@naver.com</a>
+          </p>
+
+          <!-- 💡 2. 카카오톡 (href 속성에 실제 채널/오픈카톡 URL을 덮어씌워주세요!) -->
+          <p>
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <path
+                d="M12 3c-5.523 0-10 3.545-10 7.92 0 2.855 1.77 5.4 4.57 6.77-.42 1.49-1.34 4.71-1.37 4.88-.04.18.11.23.23.15.1-.06 3.48-2.36 4.95-3.4.99.17 2.03.26 3.12.26 5.523 0 10-3.545 10-7.92S17.523 3 12 3z">
+              </path>
+            </svg>
+            <a href="http://pf.kakao.com/_xxxxxx" target="_blank" title="카카오톡 상담하기">KakaoTalk : @codewave_web</a>
+          </p>
+
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>평일 09:00 - 18:00 (주말/공휴일 휴무)</span>
+          </p>
         </div>
       </div>
 
@@ -504,7 +530,9 @@
           <div class="form-group checkbox-group">
             <label>
               <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
-              <span>[필수] 개인정보 수집 및 이용에 동의합니다. (안전한 보안 환경에서 검토되며, 목적 달성 후 지체 없이 파기됩니다)</span>
+              <span>[필수] <a href="pages/privacy.html" target="_blank" onclick="event.stopPropagation()"
+                  style="text-decoration: underline; color: var(--color-primary); font-weight: 700;">개인정보 수집 및 이용</a>에
+                동의합니다.</span>
             </label>
           </div>
           <button type="submit" class="btn-primary w-100 btn-shine"><span>상담 신청하기 🚀</span></button>
