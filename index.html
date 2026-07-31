@@ -18,8 +18,8 @@
   <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <script type="module" crossorigin src="./assets/main-Bk7x4Bo5.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-BM1b2z4t.css">
+  <script type="module" crossorigin src="./assets/main-DizOtdhm.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-nGmgclw9.css">
 </head>
 
 <body>
@@ -491,17 +491,22 @@
         <form id="contact-form" action="https://formspree.io/f/xjgnzjvv" method="POST" class="modal-form">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">성함 또는 담당자명 <span class="required">*</span></label>
-              <input type="text" id="name" name="name" required placeholder="예: 홍길동">
+              <label for="userName">성함 또는 담당자명 <span class="required">*</span></label>
+              <!-- autocomplete="name" 추가, id="userName"으로 변경 -->
+              <input type="text" id="userName" name="name" required placeholder="예: 홍길동" autocomplete="name">
             </div>
             <div class="form-group">
-              <label for="company">회사명 또는 소속</label>
-              <input type="text" id="company" name="company" placeholder="예: (주)코드웍스">
+              <label for="userCompany">회사명 또는 소속</label>
+              <!-- autocomplete="organization" 추가, id="userCompany"로 변경 -->
+              <input type="text" id="userCompany" name="company" placeholder="예: (주)코드웍스" autocomplete="organization">
             </div>
           </div>
           <div class="form-group">
-            <label for="contact">연락처 및 이메일 <span class="required">*</span></label>
-            <input type="text" id="contact" name="contact" required placeholder="전화번호 또는 카카오톡, 이메일">
+            <!-- 💡 for="userContact"로 변경하여 section id="contact"와의 충돌 해결 -->
+            <label for="userContact">연락처 및 이메일 <span class="required">*</span></label>
+            <!-- id="userContact"로 변경, 여러 정보가 들어가므로 autocomplete="off"로 설정 -->
+            <input type="text" id="userContact" name="contact" required placeholder="전화번호 또는 카카오톡, 이메일"
+              autocomplete="off">
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -545,13 +550,11 @@
               및 누락 방지를 위해 링크 형태로 접수받고 있습니다.</p>
           </div>
 
-          <!-- 💡 1. 이탈률 0%를 위한 인라인 약관 토글 (새창 열기 방지) -->
           <div class="form-group checkbox-group">
             <label>
               <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
               <span>[필수] <button type="button" class="privacy-toggle-btn">개인정보 수집 및 이용</button>에 동의합니다.</span>
             </label>
-            <!-- 아래 박스는 기본적으로 숨겨져 있다가 버튼 클릭 시 열립니다 -->
             <div class="privacy-detail-box" style="display: none;">
               CODE WORKS(이하 "작업자")는 프로젝트 문의 접수, 정확한 견적 산출, 개발 진행 시 원활한 의사소통 및 결과물 납품을 위해 최소한의 개인정보만을 수집합니다.<br><br>
               1. 수집항목: 담당자 성명, 연락처(전화번호, 이메일), 요구사항<br>
