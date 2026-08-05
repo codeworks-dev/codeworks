@@ -18,7 +18,7 @@
   <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <script type="module" crossorigin src="./assets/main-CJ6iPrpV.js"></script>
+  <script type="module" crossorigin src="./assets/main-EZr8BHg7.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-CEO3ZJeE.css">
 </head>
 
@@ -254,7 +254,6 @@
               </div>
             </div>
             <div class="portfolio__info">
-              <!-- 💡 타이틀 및 설명 워딩 수정됨 -->
               <h3>B2B SaaS 플랫폼</h3>
               <p>
                 다크 테마와 글래스모피즘(Glassmorphism) UI, 네온 포인트가
@@ -286,7 +285,6 @@
               </div>
             </div>
             <div class="portfolio__info">
-              <!-- 💡 타이틀 및 설명 워딩 수정됨 -->
               <h3>F&B 프리미엄 브랜드</h3>
               <p>
                 브랜드 아이덴티티를 극대화하는 에디토리얼 레이아웃과 반응형 UI, 매끄러운 스크롤 인터랙션이 적용된 F&B 웹 퍼블리싱
@@ -469,7 +467,7 @@
       </div>
     </section>
 
-    <!-- 💡 8. FAQ (준비사항 병합 및 유지보수 조항 복구 완료) -->
+    <!-- 8. FAQ -->
     <section id="faq" class="section faq">
       <div class="container">
         <div class="section__header text-center reveal-up">
@@ -662,13 +660,12 @@
     </svg>
   </button>
 
-  <!-- 커스텀 프로젝트 문의 모달 -->
+  <!-- 💡 고도화된 커스텀 프로젝트 문의 모달 (Formspree 완벽 연동용) -->
   <div id="contact-modal" class="custom-modal" aria-hidden="true">
     <div class="modal-backdrop"></div>
-    <div class="modal-container">
+    <div class="modal-container" style="max-width: 650px;"> <!-- 폼 항목이 늘어나 너비를 약간 넓혔습니다 -->
       <button class="modal-close" aria-label="닫기">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -676,95 +673,106 @@
 
       <div class="modal-header">
         <h3>의뢰 요청서 접수</h3>
-        <p>
-          의뢰 정보를 상세히 남겨주시면 검토 후 영업일 1일 이내에
-          연락드리겠습니다.
-        </p>
+        <p>정확한 견적을 위해 최대한 상세히 작성해 주세요.</p>
       </div>
 
       <div class="modal-body" data-lenis-prevent>
         <form id="contact-form" action="https://formspree.io/f/xjgnzjvv" method="POST" class="modal-form">
+          
+          <!-- 1. 기본 정보 섹션 -->
+          <h4 style="margin-bottom: 15px; font-size: 1.1rem; color: var(--color-primary); border-bottom: 1px solid #eee; padding-bottom: 8px;">1. 기본 정보</h4>
           <div class="form-row">
             <div class="form-group">
               <label for="userName">성함 또는 담당자명 <span class="required">*</span></label>
-              <!-- autocomplete="name" 추가, id="userName"으로 변경 -->
               <input type="text" id="userName" name="name" required placeholder="예: 홍길동" autocomplete="name" />
             </div>
             <div class="form-group">
               <label for="userCompany">회사명 또는 소속</label>
-              <!-- autocomplete="organization" 추가, id="userCompany"로 변경 -->
               <input type="text" id="userCompany" name="company" placeholder="예: (주)코드웍스" autocomplete="organization" />
             </div>
           </div>
           <div class="form-group">
-            <!-- 💡 for="userContact"로 변경하여 section id="contact"와의 충돌 해결 -->
             <label for="userContact">연락처 및 이메일 <span class="required">*</span></label>
-            <!-- id="userContact"로 변경, 여러 정보가 들어가므로 autocomplete="off"로 설정 -->
-            <input type="text" id="userContact" name="contact" required placeholder="전화번호 또는 카카오톡, 이메일"
-              autocomplete="off" />
+            <input type="text" id="userContact" name="contact" required placeholder="전화번호 또는 카카오톡, 이메일" autocomplete="off" />
           </div>
+
+          <!-- 2. 프로젝트 상세 섹션 -->
+          <h4 style="margin: 25px 0 15px; font-size: 1.1rem; color: var(--color-primary); border-bottom: 1px solid #eee; padding-bottom: 8px;">2. 프로젝트 상세</h4>
+          
+          <!-- 신규 추가: 디자인 시안 여부 (정확한 견적의 핵심) -->
+          <div class="form-group">
+            <label>디자인 시안 보유 상태 <span class="required">*</span></label>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px;">
+              <label style="font-weight: normal;"><input type="radio" name="design-status" value="피그마 완벽 준비" required> 피그마(Figma) 시안 완벽 준비됨</label>
+              <label style="font-weight: normal;"><input type="radio" name="design-status" value="레퍼런스만 있음(기획 필요)"> 레퍼런스 및 텍스트만 있음 (디자인/레이아웃 기획 필요)</label>
+              <label style="font-weight: normal;"><input type="radio" name="design-status" value="기존 사이트 리뉴얼"> 기존 운영중인 사이트 리뉴얼</label>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
-              <label for="project-type">프로젝트 유형 <span class="required">*</span></label>
-              <select id="project-type" name="project-type" required>
+              <label for="page-count">예상 페이지 수 <span class="required">*</span></label>
+              <select id="page-count" name="page-count" required>
                 <option value="" disabled selected>선택해주세요</option>
-                <option value="랜딩페이지 퍼블리싱">
-                  랜딩페이지 퍼블리싱
-                </option>
-                <option value="부분 수정 / 인터랙션 추가">
-                  부분 수정 / 인터랙션 추가
-                </option>
-                <option value="프리미엄 다중 페이지 구축">
-                  프리미엄 다중 페이지 구축
-                </option>
-                <option value="기타 문의">기타 문의</option>
+                <option value="랜딩페이지 (1페이지)">랜딩페이지 (1페이지 원스크롤)</option>
+                <option value="다중 페이지 (2~5페이지)">다중 페이지 (2~5페이지)</option>
+                <option value="대형 사이트 (6페이지 이상)">대형 사이트 (6페이지 이상)</option>
+                <option value="부분 수정(섹션 단위)">일부 섹션 단순 수정</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="budget">예상 예산 범위 <span class="required">*</span></label>
-              <select id="budget" name="budget" required>
-                <option value="" disabled selected>선택해주세요</option>
-                <option value="50만원 미만">50만원 미만</option>
-                <option value="50만원 ~ 100만원">50만원 ~ 100만원</option>
-                <option value="100만원 ~ 300만원">100만원 ~ 300만원</option>
-                <option value="300만원 이상">300만원 이상</option>
-                <option value="협의 후 결정">협의 후 결정</option>
-              </select>
+              <label for="deadline">희망 마감 기한 <span class="required">*</span></label>
+              <input type="date" id="deadline" name="deadline" required />
             </div>
           </div>
+
+          <!-- 신규 추가: 부가 기능 및 프리미엄 옵션 체크박스 -->
           <div class="form-group">
-            <label for="deadline">희망 마감 기한 <span class="required">*</span></label>
-            <input type="date" id="deadline" name="deadline" required />
+            <label>희망 부가 기능 (다중 선택 가능)</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px; font-size: 0.9rem;">
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="GSAP 고급 스크롤 모션"> GSAP 고급 스크롤 모션</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="다크모드 토글"> 다크모드 적용</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="DB저장/메일 폼 연동"> 문의 폼 연동 (메일알림/DB)</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="다국어 세팅"> 다국어 세팅</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="도메인/호스팅 세팅 대행"> 도메인/호스팅 세팅 대행</label>
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="message">상세 요구사항 <span class="required">*</span></label>
-            <textarea id="message" name="message" required></textarea>
+            <label for="budget">예상 예산 범위 <span class="required">*</span></label>
+            <select id="budget" name="budget" required>
+              <option value="" disabled selected>선택해주세요</option>
+              <option value="50만원 미만">50만원 미만</option>
+              <option value="50만원 ~ 100만원">50만원 ~ 100만원</option>
+              <option value="100만원 ~ 300만원">100만원 ~ 300만원</option>
+              <option value="300만원 이상">300만원 이상</option>
+              <option value="상담 후 결정">상담 후 결정</option>
+            </select>
           </div>
+
           <div class="form-group">
-            <label for="reference">참고 레퍼런스 사이트</label>
+            <label for="message">상세 요구사항 및 전달사항 <span class="required">*</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="프로젝트의 목적, 특별히 신경 쓰고 싶은 부분, 궁금한 점 등을 자유롭게 남겨주세요." required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="reference">참고 레퍼런스 사이트 (URL)</label>
             <input type="url" id="reference" name="reference" placeholder="https://..." />
           </div>
+          
           <div class="form-group">
-            <label for="attachment-link">관련 자료 공유 링크 (선택)</label>
-            <input type="url" id="attachment-link" name="attachment-link"
-              placeholder="구글 드라이브, 노션 등의 파일 공유 링크를 남겨주세요." />
-            <p style="
-                  font-size: 0.8rem;
-                  color: var(--color-text-sub);
-                  margin-top: 6px;
-                  margin-left: 2px;
-                ">
-              ※ 대용량 파일은 보안 및 누락 방지를 위해 링크 형태로 접수받고
-              있습니다.
+            <label for="attachment-link">피그마 또는 기획서 공유 링크 (선택)</label>
+            <input type="url" id="attachment-link" name="attachment-link" placeholder="Figma, 구글 드라이브, 노션 등의 링크" />
+            <p style="font-size: 0.8rem; color: var(--color-text-sub); margin-top: 6px; margin-left: 2px;">
+              ※ 대용량 파일은 보안 및 누락 방지를 위해 링크 형태로 접수받고 있습니다.
             </p>
           </div>
 
-          <div class="form-group checkbox-group">
+          <div class="form-group checkbox-group" style="margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px;">
             <label>
               <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
               <span>[필수]
-                <button type="button" class="privacy-toggle-btn">
-                  개인정보 수집 및 이용</button>에 동의합니다.</span>
+                <button type="button" class="privacy-toggle-btn">개인정보 수집 및 이용</button>에 동의합니다.</span>
             </label>
             <div class="privacy-detail-box" style="display: none">
               CODE WORKS(이하 "작업자")는 프로젝트 문의 접수, 정확한 견적
@@ -776,19 +784,18 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-primary w-100 btn-shine" style="margin-top: 10px">
-            <span>상담 신청하기 🚀</span>
+          <button type="submit" class="btn-primary w-100 btn-shine" style="margin-top: 15px; padding: 15px; font-size: 1.1rem;">
+            <span>빠른 견적 받아보기 🚀</span>
           </button>
         </form>
 
         <div id="form-success" class="form-success-msg" style="display: none">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
           <h4>문의가 성공적으로 접수되었습니다!</h4>
-          <p>남겨주신 내용을 꼼꼼히 검토 후 빠르게 연락드리겠습니다.</p>
+          <p>남겨주신 상세 요건을 꼼꼼히 분석하여 빠르게 연락드리겠습니다.</p>
         </div>
       </div>
     </div>
