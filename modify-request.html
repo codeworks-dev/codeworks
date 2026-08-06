@@ -37,7 +37,7 @@
       text-align: center;
     }
     .form-header h1 { margin: 0 0 10px 0; font-size: 1.8rem; color: #ffd900; }
-    .form-header p { margin: 0; font-size: 0.95rem; color: #ccc; line-height: 1.6; }
+    .form-header p { margin: 0; font-size: 0.95rem; color: #ccc; line-height: 1.6; word-break: keep-all; }
 
     .notice-box {
       background: #fffdf5;
@@ -48,6 +48,7 @@
       font-size: 0.95rem;
       line-height: 1.6;
       color: #444;
+      word-break: keep-all;
     }
 
     .form-body { padding: 0 30px 40px; }
@@ -60,6 +61,17 @@
     }
     .form-group input:focus, .form-group textarea:focus {
       outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
+    }
+
+    /* 💡 기본 정보 행 그룹 스타일 (PC용) */
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .form-row .form-group {
+      flex: 1;
+      margin: 0;
     }
 
     /* 동적 수정 항목 컨테이너 */
@@ -98,6 +110,22 @@
 
     #form-success { text-align: center; padding: 50px 20px; display: none; }
     #form-success svg { width: 60px; height: 60px; stroke: #4CAF50; margin-bottom: 20px; }
+
+    /* 📱 모바일 반응형 처리 */
+    @media (max-width: 600px) {
+      body { padding: 20px 10px; }
+      .form-header { padding: 30px 20px; }
+      .form-header h1 { font-size: 1.5rem; }
+      .notice-box { margin: 20px; padding: 15px; font-size: 0.9rem; }
+      .form-body { padding: 0 20px 30px; }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .request-item { padding: 15px; }
+    }
   </style>
 </head>
 <body>
@@ -122,12 +150,12 @@
         <form id="modify-form" action="https://formspree.io/f/mrpzgroj" method="POST">
           
           <!-- 1. 기본 정보 -->
-          <div style="display: flex; gap: 15px; margin-bottom: 30px;">
-            <div class="form-group" style="flex: 1; margin: 0;">
+          <div class="form-row">
+            <div class="form-group">
               <label>고객명 (또는 기업명) <span style="color:red">*</span></label>
               <input type="text" name="Client_Name" required placeholder="예: 홍길동">
             </div>
-            <div class="form-group" style="flex: 1; margin: 0;">
+            <div class="form-group">
               <label>프로젝트명 <span style="color:red">*</span></label>
               <input type="text" name="Project_Name" required placeholder="예: 기업홍보 랜딩페이지">
             </div>
@@ -158,7 +186,7 @@
           <!-- 항목 추가 버튼 -->
           <button type="button" class="btn-add" onclick="addNewItem()">+ 수정 사항 추가하기 (항목 늘리기)</button>
 
-          <button type="submit" class="btn-submit">모든 의견을 취합하여 제출하기 🚀</button>
+          <button type="submit" class="btn-submit">수정 요청사항 제출하기 🚀</button>
         </form>
       </div>
     </div>
@@ -213,29 +241,31 @@
       updateItemNumbers();
     }
 
-    // 삭제 후 항목 번호 재정렬 (에러 해결 완료)
+    // 삭제 후 항목 번호 재정렬 (에러 완벽 수정 완료!)
     function updateItemNumbers() {
       const items = document.querySelectorAll('.request-item');
       let currentNum = 1;
       items.forEach(item => {
         item.dataset.index = currentNum;
+        
+        // 역슬래시 에러가 났던 부분 수정
         item.querySelector('h3').textContent = `수정 항목 ${currentNum}`;
         
-        // input의 name 속성도 폼스프리에 맞게 재정렬
-        const locationInput = item.querySelector('input[name^="Item"]');
-        const detailInput = item.querySelector('textarea[name^="Item"]');
-        const imageInput = item.querySelector('input[name*="ImageLink"]');
+        const locationInput = item.querySelector('input[name*="_Location"]');
+        const detailInput = item.querySelector('textarea[name*="_Detail"]');
+        const imageInput = item.querySelector('input[name*="_ImageLink"]');
         
-        locationInput.name = `Item${currentNum}_Location`;
-        detailInput.name = `Item${currentNum}_Detail`;
-        if(imageInput) imageInput.name = `Item${currentNum}_ImageLink`;
+        // input의 name 속성도 폼스프리에 맞게 재정렬
+        if (locationInput) locationInput.name = `Item${currentNum}_Location`;
+        if (detailInput) detailInput.name = `Item${currentNum}_Detail`;
+        if (imageInput) imageInput.name = `Item${currentNum}_ImageLink`;
         
         currentNum++;
       });
       itemCount = currentNum - 1;
     }
 
-    // 폼스프리 비동기 제출 (페이지 안 넘어가게 처리)
+    // 폼스프리 비동기 제출
     const form = document.getElementById('modify-form');
     const successMsg = document.getElementById('form-success');
     const formContent = document.getElementById('form-content');
@@ -243,12 +273,6 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      // 사용자에게 폼스프리 주소 입력 여부 경고
-      if(form.action.includes('여기에-새로-만든-폼스프리-주소를-넣어주세요')) {
-        alert("개발자 안내: HTML 코드 112번째 줄의 action 주소를 새로 만든 Formspree 주소로 변경해주세요!");
-        return;
-      }
-
       const submitBtn = form.querySelector('.btn-submit');
       const originalText = submitBtn.innerText;
       submitBtn.innerText = '전송 중입니다...';
