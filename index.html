@@ -40,7 +40,7 @@
         <span class="badge-dot"></span>
         <span>의뢰 신청 접수중</span>
       </div>
-      <!-- 다크모드 토글 버튼 -->
+
       <button class="theme-toggle" aria-label="다크모드 전환" id="theme-toggle-btn">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -660,12 +660,12 @@
     </svg>
   </button>
 
-  <!-- 💡 고도화된 커스텀 프로젝트 문의 모달 (Formspree 완벽 연동용) -->
   <div id="contact-modal" class="custom-modal" aria-hidden="true">
     <div class="modal-backdrop"></div>
     <div class="modal-container" style="max-width: 650px;">
       <button class="modal-close" aria-label="닫기">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -678,9 +678,11 @@
 
       <div class="modal-body" data-lenis-prevent>
         <form id="contact-form" action="https://formspree.io/f/xjgnzjvv" method="POST" class="modal-form">
-          
+
           <!-- 1. 기본 정보 섹션 -->
-          <h4 style="margin-bottom: 15px; font-size: 1.1rem; color: var(--color-primary); border-bottom: 1px solid #eee; padding-bottom: 8px;">1. 기본 정보</h4>
+          <h4
+            style="margin-bottom: 15px; font-size: 1.1rem; color: var(--color-primary); border-bottom: 1px solid #eee; padding-bottom: 8px;">
+            1. 기본 정보</h4>
           <div class="form-row">
             <div class="form-group">
               <label for="userName">성함 또는 담당자명 <span class="required">*</span></label>
@@ -688,30 +690,33 @@
             </div>
             <div class="form-group">
               <label for="userCompany">회사명 또는 소속</label>
-              <input type="text" id="userCompany" name="회사명_또는_소속" placeholder="예: (주)코드웍스" autocomplete="organization" />
+              <input type="text" id="userCompany" name="회사명_또는_소속" placeholder="예: (주)코드웍스"
+                autocomplete="organization" />
             </div>
           </div>
           <div class="form-group">
             <label for="userContact">연락처 및 이메일 <span class="required">*</span></label>
-            <input type="text" id="userContact" name="연락처_및_이메일" required placeholder="전화번호 또는 카카오톡, 이메일" autocomplete="off" />
+            <input type="text" id="userContact" name="연락처_및_이메일" required placeholder="전화번호 또는 카카오톡, 이메일"
+              autocomplete="off" />
           </div>
 
-          <!-- 2. 프로젝트 상세 섹션 -->
-          <h4 style="margin: 25px 0 15px; font-size: 1.1rem; color: var(--color-primary); border-bottom: 1px solid #eee; padding-bottom: 8px;">2. 프로젝트 상세</h4>
-          
+          <h4
+            style="margin: 25px 0 15px; font-size: 1.1rem; color: var(--color-primary); border-bottom: 1px solid #eee; padding-bottom: 8px;">
+            2. 프로젝트 상세</h4>
+
           <div class="form-group">
             <label>디자인 시안 보유 상태 <span class="required">*</span></label>
             <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px;">
               <label style="font-weight: normal;">
-                <input type="radio" name="디자인_시안_보유상태" value="피그마 완벽 준비" required> 
+                <input type="radio" name="디자인_시안_보유상태" value="피그마 완벽 준비" required>
                 피그마(Figma) 시안 준비됨
               </label>
               <label style="font-weight: normal;">
-                <input type="radio" name="디자인_시안_보유상태" value="레퍼런스만 있음(기획료 추가 동의)"> 
+                <input type="radio" name="디자인_시안_보유상태" value="레퍼런스만 있음(기획료 추가 동의)">
                 레퍼런스/텍스트만 있음
               </label>
               <label style="font-weight: normal;">
-                <input type="radio" name="디자인_시안_보유상태" value="기존 사이트 리뉴얼"> 
+                <input type="radio" name="디자인_시안_보유상태" value="기존 사이트 리뉴얼">
                 기존 사이트 리뉴얼 (기타 수정 및 인터렉션추가)
               </label>
             </div>
@@ -737,12 +742,16 @@
           <div class="form-group">
             <label>희망 부가 기능 (다중 선택 가능)</label>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px; font-size: 0.9rem;">
-              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="고급 스크롤 효과"> 고급 스크롤 효과</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="고급 스크롤 효과"> 고급 스크롤
+                효과</label>
               <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="다크모드 세팅"> 다크모드</label>
               <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="고객 문의 폼"> 고객 문의 폼</label>
-              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="다국어 세팅"> 다국어 페이지 구현</label>
-              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="도메인 및 호스팅 세팅"> 도메인 및 호스팅 세팅 대행</label>
-              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="기타 기능"> 기타 (하단 상세 요구사항에 직접 기입)</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="다국어 세팅"> 다국어 페이지
+                구현</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="도메인 및 호스팅 세팅"> 도메인 및 호스팅
+                세팅 대행</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="부가기능[]" value="기타 기능"> 기타 (하단 상세 요구사항에 직접
+                기입)</label>
             </div>
           </div>
 
@@ -762,12 +771,12 @@
             <label for="message">상세 요구사항 및 전달사항 <span class="required">*</span></label>
             <textarea id="message" name="상세_요구사항" rows="4" required></textarea>
           </div>
-          
+
           <div class="form-group">
             <label for="reference">참고 레퍼런스 사이트 (URL)</label>
             <input type="url" id="reference" name="참고_레퍼런스_사이트" placeholder="https://..." />
           </div>
-          
+
           <div class="form-group">
             <label for="attachment-link">피그마 또는 기획서 공유 링크 (선택)</label>
             <input type="url" id="attachment-link" name="기획서_또는_피그마_링크" placeholder="Figma, 구글 드라이브, 노션 등의 링크" />
@@ -793,13 +802,15 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-primary w-100 btn-shine" style="margin-top: 15px; padding: 15px; font-size: 1.1rem;">
+          <button type="submit" class="btn-primary w-100 btn-shine"
+            style="margin-top: 15px; padding: 15px; font-size: 1.1rem;">
             <span>빠른 견적 받아 받아보기 🚀</span>
           </button>
         </form>
 
         <div id="form-success" class="form-success-msg" style="display: none">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
