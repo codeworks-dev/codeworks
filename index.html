@@ -18,7 +18,7 @@
   <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <script type="module" crossorigin src="./assets/main-EZr8BHg7.js"></script>
+  <script type="module" crossorigin src="./assets/main-KkoTE-h0.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-CEO3ZJeE.css">
 </head>
 
@@ -663,7 +663,7 @@
   <!-- 💡 고도화된 커스텀 프로젝트 문의 모달 (Formspree 완벽 연동용) -->
   <div id="contact-modal" class="custom-modal" aria-hidden="true">
     <div class="modal-backdrop"></div>
-    <div class="modal-container" style="max-width: 650px;"> <!-- 폼 항목이 늘어나 너비를 약간 넓혔습니다 -->
+    <div class="modal-container" style="max-width: 650px;">
       <button class="modal-close" aria-label="닫기">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -699,13 +699,22 @@
           <!-- 2. 프로젝트 상세 섹션 -->
           <h4 style="margin: 25px 0 15px; font-size: 1.1rem; color: var(--color-primary); border-bottom: 1px solid #eee; padding-bottom: 8px;">2. 프로젝트 상세</h4>
           
-          <!-- 신규 추가: 디자인 시안 여부 (정확한 견적의 핵심) -->
+          <!-- 💡 수정된 부분: 고객이 거부감을 느끼지 않도록 빨간색 강조 제거 및 부드러운 워딩 -->
           <div class="form-group">
             <label>디자인 시안 보유 상태 <span class="required">*</span></label>
             <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px;">
-              <label style="font-weight: normal;"><input type="radio" name="design-status" value="피그마 완벽 준비" required> 피그마(Figma) 시안 완벽 준비됨</label>
-              <label style="font-weight: normal;"><input type="radio" name="design-status" value="레퍼런스만 있음(기획 필요)"> 레퍼런스 및 텍스트만 있음 (디자인/레이아웃 기획 필요)</label>
-              <label style="font-weight: normal;"><input type="radio" name="design-status" value="기존 사이트 리뉴얼"> 기존 운영중인 사이트 리뉴얼</label>
+              <label style="font-weight: normal;">
+                <input type="radio" name="design-status" value="피그마 완벽 준비" required> 
+                피그마(Figma) 시안 준비됨
+              </label>
+              <label style="font-weight: normal;">
+                <input type="radio" name="design-status" value="레퍼런스만 있음(기획료 추가 동의)"> 
+                레퍼런스/텍스트만 있음
+              </label>
+              <label style="font-weight: normal;">
+                <input type="radio" name="design-status" value="기존 사이트 리뉴얼"> 
+                기존 사이트 리뉴얼 (기타 수정 및 인터렉션추가)
+              </label>
             </div>
           </div>
 
@@ -726,15 +735,16 @@
             </div>
           </div>
 
-          <!-- 신규 추가: 부가 기능 및 프리미엄 옵션 체크박스 -->
+          <!-- 💡 수정된 부분: 전문 용어를 풀어서 설명하고 '기타 기능' 체크박스 추가 -->
           <div class="form-group">
             <label>희망 부가 기능 (다중 선택 가능)</label>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px; font-size: 0.9rem;">
-              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="GSAP 고급 스크롤 모션"> GSAP 고급 스크롤 모션</label>
-              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="다크모드 토글"> 다크모드 적용</label>
-              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="DB저장/메일 폼 연동"> 문의 폼 연동 (메일알림/DB)</label>
-              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="다국어 세팅"> 다국어 세팅</label>
-              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="도메인/호스팅 세팅 대행"> 도메인/호스팅 세팅 대행</label>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px; font-size: 0.9rem;">
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="고급 스크롤 효과"> 고급 스크롤 효과</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="다크모드 세팅"> 다크모드</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="고객 문의 폼"> 고객 문의 폼</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="다국어 세팅"> 다국어 페이지 구현</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="도메인 및 호스팅 세팅"> 도메인 및 호스팅 세팅 대행</label>
+              <label style="font-weight: normal;"><input type="checkbox" name="options[]" value="기타 기능"> 기타 (하단 상세 요구사항에 직접 기입)</label>
             </div>
           </div>
 
@@ -752,7 +762,7 @@
 
           <div class="form-group">
             <label for="message">상세 요구사항 및 전달사항 <span class="required">*</span></label>
-            <textarea id="message" name="message" rows="4" placeholder="프로젝트의 목적, 특별히 신경 쓰고 싶은 부분, 궁금한 점 등을 자유롭게 남겨주세요." required></textarea>
+            <textarea id="message" name="message" rows="4" required></textarea>
           </div>
           
           <div class="form-group">
@@ -768,7 +778,8 @@
             </p>
           </div>
 
-          <div class="form-group checkbox-group" style="margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px;">
+
+          <div class="form-group checkbox-group" style="margin-top: 10px;">
             <label>
               <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
               <span>[필수]
