@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODE WORKS | 통합 수정 요청서</title>
+  <!-- 폰트 로드 -->
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --color-primary: #0056b3;
+      --color-bg: #f8f9fa;
+      --color-text: #333;
+      --color-border: #ddd;
+    }
+    body { 
+      font-family: 'Pretendard', sans-serif; 
+      background-color: var(--color-bg); 
+      color: var(--color-text); 
+      margin: 0; 
+      padding: 40px 20px; 
+    }
+    
+    .form-container {
+      max-width: 800px; 
+      margin: 0 auto; 
+      background: #fff; 
+      border-radius: 16px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .form-header {
+      background: #111;
+      color: #fff;
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .form-header h1 { margin: 0 0 10px 0; font-size: 1.8rem; color: #ffd900; }
+    .form-header p { margin: 0; font-size: 0.95rem; color: #ccc; line-height: 1.6; word-break: keep-all; }
+
+    .notice-box {
+      background: #fffdf5;
+      border-left: 4px solid #ffd900;
+      padding: 20px;
+      margin: 30px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .form-body { padding: 0 30px 40px; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.95rem; }
+    .form-group input:not([type="file"]), .form-group textarea, .form-group select {
+      width: 100%; padding: 12px 15px; border: 1px solid var(--color-border);
+      border-radius: 8px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
+    }
+
+    /* 기본 정보 행 그룹 스타일 */
+    .form-row {
+      display: flex; gap: 15px; margin-bottom: 30px;
+    }
+    .form-row .form-group { flex: 1; margin: 0; }
+
+    /* 동적 수정 항목 컨테이너 */
+    .request-item {
+      background: #fcfcfc; border: 1px solid #eee; border-radius: 12px;
+      padding: 20px; margin-bottom: 20px; position: relative;
+    }
+    .request-item-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;
+    }
+    .request-item-header h3 { margin: 0; font-size: 1.1rem; color: var(--color-primary); }
+    .btn-remove {
+      background: #ff4d4f; color: #fff; border: none; padding: 5px 10px;
+      border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;
+    }
+
+    /* 드래그 앤 드롭 파일 업로드 영역 스타일 */
+    .drop-zone {
+      border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center;
+      background-color: #fafafa; transition: all 0.2s; position: relative;
+    }
+    .drop-zone.dragover {
+      border-color: var(--color-primary); background-color: #f0f7ff;
+    }
+    .drop-zone-prompt {
+      cursor: pointer;
+    }
+    .drop-zone-prompt p { margin: 0 0 5px 0; color: #555; font-size: 0.9rem; pointer-events: none; }
+    .drop-zone input[type="file"] { display: none; }
+
+    /* 개별 파일 칩(Chip) 및 X 버튼 스타일 */
+    .file-list {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; justify-content: center;
+    }
+    .file-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #eef4fc; color: var(--color-primary); border: 1px solid #bcdcff;
+      padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;
+      word-break: break-all;
+    }
+    .btn-file-remove {
+      background: none; border: none; color: #ff4d4f; font-weight: bold;
+      cursor: pointer; padding: 0 2px; font-size: 1rem; line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-file-remove:hover { color: #d9363e; }
+
+    .btn-add {
+      width: 100%; background: #eef4fc; color: var(--color-primary);
+      border: 2px dashed #bcdcff; padding: 15px; border-radius: 12px;
+      cursor: pointer; font-size: 1rem; font-weight: bold; margin-bottom: 30px;
+      transition: all 0.2s;
+    }
+    .btn-add:hover { background: #dceaf9; }
+
+    .btn-submit {
+      width: 100%; background: var(--color-primary); color: #fff;
+      border: none; padding: 18px; border-radius: 8px; font-size: 1.1rem;
+      font-weight: bold; cursor: pointer; transition: background 0.3s;
+    }
+    .btn-submit:hover { background: #004494; }
+
+    #form-success { text-align: center; padding: 50px 20px; display: none; }
+    #form-success svg { width: 60px; height: 60px; stroke: #4CAF50; margin-bottom: 20px; }
+
+    @media (max-width: 600px) {
+      body { padding: 20px 10px; }
+      .form-header { padding: 30px 20px; }
+      .form-header h1 { font-size: 1.5rem; }
+      .notice-box { margin: 20px; padding: 15px; font-size: 0.9rem; }
+      .form-body { padding: 0 20px 30px; }
+      .form-row { flex-direction: column; gap: 20px; margin-bottom: 20px; }
+      .request-item { padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <div class="form-header">
+      <h1>CODE WORKS 통합 수정 요청서</h1>
+      <p>파편화된 피드백으로 인한 누락을 방지하기 위해 전용 폼으로 접수받고 있습니다.<br>
+      의견을 모두 취합하여 한 번에 작성해 주시길 부탁드립니다.</p>
+    </div>
+
+    <div id="form-content">
+      <div class="notice-box">
+        <strong>💡 확인해 주세요! (랜딩 페이지 제작기간 내에 무상 수정(3회) 제공)</strong><br>
+        • 본 폼을 통해 접수된 전체 내용은 <strong>'1회 차' 무상 수정으로 차감</strong>됩니다.<br>
+        • 제출 버튼을 누르시기 전, 여러 항목을 [ + 수정 사항 추가하기 ] 버튼으로 모두 모아서 기재해 주세요.<br>
+        • 사전에 협의되지 않은 새로운 기능/레이아웃 추가는 접수되지 않으며 별도의 상담을 통해 진행하고 있습니다.
+      </div>
+
+      <div class="form-body">
+        <form id="modify-form" action="https://formspree.io/f/mrpzgroj" method="POST" enctype="multipart/form-data">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>고객명 (또는 기업명) <span style="color:red">*</span></label>
+              <input type="text" name="Client_Name" required placeholder="예: 홍길동">
+            </div>
+            <div class="form-group">
+              <label>프로젝트명 <span style="color:red">*</span></label>
+              <input type="text" name="Project_Name" required placeholder="예: 기업홍보 랜딩페이지">
+            </div>
+          </div>
+
+          <div id="items-container">
+            <div class="request-item" data-index="1">
+              <div class="request-item-header">
+                <h3>수정 항목 1</h3>
+              </div>
+              <div class="form-group">
+                <label>페이지 및 위치 (어디를 고칠까요?)</label>
+                <input type="text" name="Item1_Location" required placeholder="예: 메인페이지 최상단 배너">
+              </div>
+              <div class="form-group">
+                <label>변경 요청 사항 (어떻게 고칠까요?)</label>
+                <textarea name="Item1_Detail" rows="3" required placeholder="예: 현재 파란색 버튼을 딥 네이비색(#000080)으로 변경해 주세요."></textarea>
+              </div>
+              
+              <!-- 파일 드래그 앤 드롭 영역 -->
+              <div class="form-group">
+                <label>참고 이미지 및 파일 첨부 (선택)</label>
+                <div class="drop-zone">
+                  <div class="drop-zone-prompt" onclick="this.parentElement.querySelector('input[type=file]').click()">
+                    <p>📁 이곳을 클릭하거나 파일을 드래그하여 첨부해 주세요.</p>
+                    <p style="font-size: 0.8rem; color:#888;">(개별 파일 5MB 이하, 이미지/압축파일 등)</p>
+                  </div>
+                  <input type="file" name="Item1_File" multiple onchange="handleFileInputChange(this)">
+                  <div class="file-list"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <button type="button" class="btn-add" onclick="addNewItem()">+ 수정 사항 추가하기 (항목 늘리기)</button>
+
+          <button type="submit" class="btn-submit">수정 요청사항 제출하기 🚀</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="form-success">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <h2 style="margin-bottom: 10px;">수정 요청이 접수되었습니다!</h2>
+      <p style="color: #666; line-height: 1.6;">담당자가 내용 검토 후 빠르게 반영하여 안내해 드리겠습니다.<br>감사합니다.</p>
+    </div>
+  </div>
+
+  <script>
+    let itemCount = 1;
+    const fileStores = { 1: new DataTransfer() };
+
+    function initFileStore(index) {
+      if (!fileStores[index]) {
+        fileStores[index] = new DataTransfer();
+      }
+    }
+
+    function addNewItem() {
+      itemCount++;
+      initFileStore(itemCount);
+
+      const container = document.getElementById('items-container');
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'request-item';
+      itemDiv.dataset.index = itemCount;
+      
+      itemDiv.innerHTML = `
+        <div class="request-item-header">
+          <h3>수정 항목 ${itemCount}</h3>
+          <button type="button" class="btn-remove" onclick="removeItem(this)">삭제 ✕</button>
+        </div>
+        <div class="form-group">
+          <label>페이지 및 위치 (어디를 고칠까요?)</label>
+          <input type="text" name="Item${itemCount}_Location" required placeholder="예: 오시는 길 섹션">
+        </div>
+        <div class="form-group">
+          <label>변경 요청 사항 (어떻게 고칠까요?)</label>
+          <textarea name="Item${itemCount}_Detail" rows="3" required placeholder="상세히 적어주세요."></textarea>
+        </div>
+        <div class="form-group">
+          <label>참고 이미지 및 파일 첨부 (선택)</label>
+          <div class="drop-zone">
+            <div class="drop-zone-prompt" onclick="this.parentElement.querySelector('input[type=file]').click()">
+              <p>📁 이곳을 클릭하거나 파일을 드래그하여 첨부해 주세요.</p>
+              <p style="font-size: 0.8rem; color:#888;">(개별 파일 5MB 이하, 이미지/압축파일 등)</p>
+            </div>
+            <input type="file" name="Item${itemCount}_File" multiple onchange="handleFileInputChange(this)">
+            <div class="file-list"></div>
+          </div>
+        </div>
+      `;
+      container.appendChild(itemDiv);
+    }
+
+    function handleFileInputChange(input) {
+      const itemDiv = input.closest('.request-item');
+      const index = itemDiv.dataset.index;
+      handleFiles(index, input.files);
+    }
+
+    function handleFiles(index, newFiles) {
+      const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+      initFileStore(index);
+      const dt = fileStores[index];
+
+      Array.from(newFiles).forEach(file => {
+        if (file.size > MAX_SIZE) {
+          alert(`[${file.name}] 파일 용량이 5MB를 초과하여 제외되었습니다. 5MB 이하의 파일만 첨부 가능합니다.`);
+        } else {
+          const exists = Array.from(dt.files).some(f => f.name === file.name && f.size === file.size);
+          if (!exists) {
+            dt.items.add(file);
+          }
+        }
+      });
+
+      updateFileInputAndUI(index);
+    }
+
+    function removeFile(index, fileIdx) {
+      const dt = fileStores[index];
+      if (!dt) return;
+
+      const newDt = new DataTransfer();
+      Array.from(dt.files).forEach((file, i) => {
+        if (i !== fileIdx) {
+          newDt.items.add(file);
+        }
+      });
+      fileStores[index] = newDt;
+      updateFileInputAndUI(index);
+    }
+
+    function updateFileInputAndUI(index) {
+      const itemDiv = document.querySelector(`.request-item[data-index="${index}"]`);
+      if (!itemDiv) return;
+
+      const fileInput = itemDiv.querySelector('input[type="file"]');
+      const fileListDiv = itemDiv.querySelector('.file-list');
+      const dt = fileStores[index] || new DataTransfer();
+
+      fileInput.files = dt.files;
+
+      fileListDiv.innerHTML = '';
+      if (dt.files.length > 0) {
+        Array.from(dt.files).forEach((file, fIdx) => {
+          const chip = document.createElement('div');
+          chip.className = 'file-chip';
+          chip.innerHTML = `
+            <span>📄 ${file.name}</span>
+            <button type="button" class="btn-file-remove" onclick="event.stopPropagation(); removeFile(${index}, ${fIdx})">✕</button>
+          `;
+          fileListDiv.appendChild(chip);
+        });
+      }
+    }
+
+    function removeItem(btn) {
+      btn.closest('.request-item').remove();
+      updateItemNumbers();
+    }
+
+    function updateItemNumbers() {
+      const items = document.querySelectorAll('.request-item');
+      const newStores = {};
+      let currentNum = 1;
+
+      items.forEach(item => {
+        const oldIndex = item.dataset.index;
+        newStores[currentNum] = fileStores[oldIndex] || new DataTransfer();
+
+        item.dataset.index = currentNum;
+        item.querySelector('h3').textContent = `수정 항목 ${currentNum}`;
+        
+        const locationInput = item.querySelector('input[name*="_Location"]');
+        const detailInput = item.querySelector('textarea[name*="_Detail"]');
+        const fileInput = item.querySelector('input[type="file"]');
+        
+        if (locationInput) locationInput.name = `Item${currentNum}_Location`;
+        if (detailInput) detailInput.name = `Item${currentNum}_Detail`;
+        if (fileInput) fileInput.name = `Item${currentNum}_File`;
+
+        currentNum++;
+      });
+
+      for (let key in fileStores) delete fileStores[key];
+      Object.assign(fileStores, newStores);
+
+      items.forEach(item => {
+        updateFileInputAndUI(item.dataset.index);
+      });
+
+      itemCount = currentNum - 1;
+    }
+
+    document.addEventListener('dragover', (e) => {
+      const dropZone = e.target.closest('.drop-zone');
+      if (dropZone) {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+      }
+    });
+
+    document.addEventListener('dragleave', (e) => {
+      const dropZone = e.target.closest('.drop-zone');
+      if (dropZone) {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+      }
+    });
+
+    document.addEventListener('drop', (e) => {
+      const dropZone = e.target.closest('.drop-zone');
+      if (dropZone) {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        const itemDiv = dropZone.closest('.request-item');
+        if (itemDiv && e.dataTransfer.files.length > 0) {
+          const index = itemDiv.dataset.index;
+          handleFiles(index, e.dataTransfer.files);
+        }
+      }
+    });
+
+    const form = document.getElementById('modify-form');
+    const successMsg = document.getElementById('form-success');
+    const formContent = document.getElementById('form-content');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = form.querySelector('.btn-submit');
+      const originalText = submitBtn.innerText;
+      submitBtn.innerText = '파일 및 요청사항 전송 중입니다...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          formContent.style.display = 'none';
+          successMsg.style.display = 'block';
+          window.scrollTo(0,0);
+        } else if (response.status === 400) {
+          alert('전송 실패(400): 현재 연결된 Formspree 무료 요금제는 파일 첨부를 지원하지 않습니다. 텍스트로만 제출하시거나 유료 요금제로 업그레이드해 주세요.');
+          submitBtn.innerText = originalText;
+          submitBtn.disabled = false;
+        } else {
+          alert('오류가 발생했습니다. 다시 시도해 주세요.');
+          submitBtn.innerText = originalText;
+          submitBtn.disabled = false;
+        }
+      } catch (error) {
+        alert('네트워크 오류가 발생했습니다.');
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
