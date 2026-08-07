@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CODE WORKS | 통합 수정 요청서</title>
   <!-- 폰트 로드 -->
-  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preload" as="style"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <style>
     :root {
       --color-primary: #0056b3;
@@ -13,20 +15,21 @@
       --color-text: #333;
       --color-border: #ddd;
     }
-    body { 
-      font-family: 'Pretendard', sans-serif; 
-      background-color: var(--color-bg); 
-      color: var(--color-text); 
-      margin: 0; 
-      padding: 40px 20px; 
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      margin: 0;
+      padding: 40px 20px;
     }
-    
+
     .form-container {
-      max-width: 800px; 
-      margin: 0 auto; 
-      background: #fff; 
-      border-radius: 16px; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       overflow: hidden;
     }
 
@@ -36,8 +39,20 @@
       padding: 40px 30px;
       text-align: center;
     }
-    .form-header h1 { margin: 0 0 10px 0; font-size: 1.8rem; color: #ffd900; }
-    .form-header p { margin: 0; font-size: 0.95rem; color: #ccc; line-height: 1.6; word-break: keep-all; }
+
+    .form-header h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8rem;
+      color: #ffd900;
+    }
+
+    .form-header p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
 
     .notice-box {
       background: #fffdf5;
@@ -51,114 +66,261 @@
       word-break: keep-all;
     }
 
-    .form-body { padding: 0 30px 40px; }
-    
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.95rem; }
-    .form-group input:not([type="file"]), .form-group textarea, .form-group select {
-      width: 100%; padding: 12px 15px; border: 1px solid var(--color-border);
-      border-radius: 8px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box;
+    .form-body {
+      padding: 0 30px 40px;
     }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .form-group input:not([type="file"]),
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
     }
 
     .form-row {
-      display: flex; gap: 15px; margin-bottom: 30px;
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
     }
-    .form-row .form-group { flex: 1; margin: 0; }
+
+    .form-row .form-group {
+      flex: 1;
+      margin: 0;
+    }
 
     .request-item {
-      background: #fcfcfc; border: 1px solid #eee; border-radius: 12px;
-      padding: 20px; margin-bottom: 20px; position: relative;
+      background: #fcfcfc;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
     }
+
     .request-item-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
     }
-    .request-item-header h3 { margin: 0; font-size: 1.1rem; color: var(--color-primary); }
+
+    .request-item-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--color-primary);
+    }
+
     .btn-remove {
-      background: #ff4d4f; color: #fff; border: none; padding: 5px 10px;
-      border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;
+      background: #ff4d4f;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: bold;
     }
 
     .drop-zone {
-      border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center;
-      background-color: #fafafa; transition: all 0.2s; position: relative;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      background-color: #fafafa;
+      transition: all 0.2s;
+      position: relative;
     }
+
     .drop-zone.dragover {
-      border-color: var(--color-primary); background-color: #f0f7ff;
+      border-color: var(--color-primary);
+      background-color: #f0f7ff;
     }
-    .drop-zone-prompt { cursor: pointer; }
-    .drop-zone-prompt p { margin: 0 0 5px 0; color: #555; font-size: 0.9rem; pointer-events: none; }
-    .drop-zone input[type="file"] { display: none; }
+
+    .drop-zone-prompt {
+      cursor: pointer;
+    }
+
+    .drop-zone-prompt p {
+      margin: 0 0 5px 0;
+      color: #555;
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    .drop-zone input[type="file"] {
+      display: none;
+    }
 
     .file-list {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      justify-content: center;
     }
+
     .file-chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: #eef4fc; color: var(--color-primary); border: 1px solid #bcdcff;
-      padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eef4fc;
+      color: var(--color-primary);
+      border: 1px solid #bcdcff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
       word-break: break-all;
     }
+
     .btn-file-remove {
-      background: none; border: none; color: #ff4d4f; font-weight: bold;
-      cursor: pointer; padding: 0 2px; font-size: 1rem; line-height: 1;
-      display: inline-flex; align-items: center; justify-content: center;
+      background: none;
+      border: none;
+      color: #ff4d4f;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0 2px;
+      font-size: 1rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    .btn-file-remove:hover { color: #d9363e; }
+
+    .btn-file-remove:hover {
+      color: #d9363e;
+    }
 
     .btn-add {
-      width: 100%; background: #eef4fc; color: var(--color-primary);
-      border: 2px dashed #bcdcff; padding: 15px; border-radius: 12px;
-      cursor: pointer; font-size: 1rem; font-weight: bold; margin-bottom: 30px;
+      width: 100%;
+      background: #eef4fc;
+      color: var(--color-primary);
+      border: 2px dashed #bcdcff;
+      padding: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 30px;
       transition: all 0.2s;
     }
-    .btn-add:hover { background: #dceaf9; }
+
+    .btn-add:hover {
+      background: #dceaf9;
+    }
 
     .btn-submit {
-      width: 100%; background: var(--color-primary); color: #fff;
-      border: none; padding: 18px; border-radius: 8px; font-size: 1.1rem;
-      font-weight: bold; cursor: pointer; transition: background 0.3s;
+      width: 100%;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      padding: 18px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-    .btn-submit:hover { background: #004494; }
 
-    #form-success { text-align: center; padding: 50px 20px; display: none; }
-    #form-success svg { width: 60px; height: 60px; stroke: #4CAF50; margin-bottom: 20px; }
+    .btn-submit:hover {
+      background: #004494;
+    }
+
+    #form-success {
+      text-align: center;
+      padding: 50px 20px;
+      display: none;
+    }
+
+    #form-success svg {
+      width: 60px;
+      height: 60px;
+      stroke: #4CAF50;
+      margin-bottom: 20px;
+    }
 
     @media (max-width: 600px) {
-      body { padding: 20px 10px; }
-      .form-header { padding: 30px 20px; }
-      .form-header h1 { font-size: 1.5rem; }
-      .notice-box { margin: 20px; padding: 15px; font-size: 0.9rem; }
-      .form-body { padding: 0 20px 30px; }
-      .form-row { flex-direction: column; gap: 20px; margin-bottom: 20px; }
-      .request-item { padding: 15px; }
+      body {
+        padding: 20px 10px;
+      }
+
+      .form-header {
+        padding: 30px 20px;
+      }
+
+      .form-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .notice-box {
+        margin: 20px;
+        padding: 15px;
+        font-size: 0.9rem;
+      }
+
+      .form-body {
+        padding: 0 20px 30px;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .request-item {
+        padding: 15px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="form-container">
     <div class="form-header">
       <h1>CODE WORKS 통합 수정 요청서</h1>
       <p>파편화된 피드백으로 인한 누락을 방지하기 위해 전용 폼으로 접수받고 있습니다.<br>
-      의견을 모두 취합하여 한 번에 작성해 주시길 부탁드립니다.</p>
+        의견을 모두 취합하여 한 번에 작성해 주시길 부탁드립니다.</p>
     </div>
 
     <div id="form-content">
       <div class="notice-box">
-        <strong>💡 확인해 주세요! (신규 랜딩 페이지 제작기간 내에 무상 수정(3회) 제공)</strong><br>
-        • 본 폼을 통해 접수된 전체 내용은 <strong>'1회 차' 무상 수정으로 차감</strong>됩니다.<br>
-        • 제출 버튼을 누르시기 전, 여러 항목을 [ + 수정 사항 추가하기 ] 버튼으로 모두 모아서 기재해 주세요.<br>
+        <strong>💡 확인해 주세요!</strong><br>
+        • 제출 버튼을 누르시기 전, 여러 항목을 [ + 수정 사항 추가하기 ] 버튼으로 수정하고 싶은 부분을 모두 기재해 주세요.<br>
         • 사전에 협의되지 않은 새로운 기능/레이아웃 추가는 접수되지 않으며 별도의 상담을 통해 진행하고 있습니다.
       </div>
 
       <div class="form-body">
         <!-- Forminit 표준 액션 URL 및 기본 POST 전송 방식 적용 -->
         <form id="modify-form" action="https://forminit.com/f/5cbf6h7ff9u" method="POST" enctype="multipart/form-data">
-          
+
           <div class="form-row">
             <div class="form-group">
               <label>고객명 (또는 기업명) <span style="color:red">*</span></label>
@@ -181,9 +343,10 @@
               </div>
               <div class="form-group">
                 <label>변경 요청 사항 (어떻게 고칠까요?)</label>
-                <textarea name="Item1_Detail" rows="3" required placeholder="예: 현재 파란색 버튼을 딥 네이비색(#000080)으로 변경해 주세요."></textarea>
+                <textarea name="Item1_Detail" rows="3" required
+                  placeholder="예: 현재 파란색 버튼을 딥 네이비색(#000080)으로 변경해 주세요."></textarea>
               </div>
-              
+
               <div class="form-group">
                 <label>참고 이미지 및 파일 첨부 (선택)</label>
                 <div class="drop-zone">
@@ -234,7 +397,7 @@
       const itemDiv = document.createElement('div');
       itemDiv.className = 'request-item';
       itemDiv.dataset.index = itemCount;
-      
+
       itemDiv.innerHTML = `
         <div class="request-item-header">
           <h3>수정 항목 ${itemCount}</h3>
@@ -342,11 +505,11 @@
 
         item.dataset.index = currentNum;
         item.querySelector('h3').textContent = `수정 항목 ${currentNum}`;
-        
+
         const locationInput = item.querySelector('input[name*="_Location"]');
         const detailInput = item.querySelector('textarea[name*="_Detail"]');
         const fileInput = item.querySelector('input[type="file"]');
-        
+
         if (locationInput) locationInput.name = `Item${currentNum}_Location`;
         if (detailInput) detailInput.name = `Item${currentNum}_Detail`;
         if (fileInput) fileInput.name = `Item${currentNum}_File`;
@@ -402,4 +565,5 @@
     });
   </script>
 </body>
+
 </html>
