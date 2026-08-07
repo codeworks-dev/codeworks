@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
+
   <title>CODE WORKS | 프리미엄 통합 수정 요청서</title>
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -143,6 +146,11 @@
       font-size: 0.95rem;
       background-color: #fafafa;
       transition: all 0.2s ease;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
     }
 
     .form-group input:focus,
@@ -523,6 +531,9 @@
         </div>
       `;
       container.appendChild(itemDiv);
+
+      // 추가된 신규 항목 카드로 화면 부드럽게 이동
+      itemDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     function removeItem(btn) {
