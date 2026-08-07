@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODE WORKS | 접수 완료</title>
+  <link rel="preload" as="style"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --color-bg: #0a0f1c;
+      /* 메인 페이지의 딥 네이비 톤 */
+      --color-surface: #121829;
+      --color-primary: #5c4bfa;
+      /* 인디고 블루 포인트 */
+      --color-primary-hover: #4a3be0;
+      --color-text-main: #ffffff;
+      --color-text-sub: #94a3b8;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .success-container {
+      background-color: var(--color-surface);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      background: rgba(92, 75, 250, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .icon-wrapper svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--color-primary);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--color-text-sub);
+      line-height: 1.6;
+      margin: 0 0 40px;
+      font-size: 1.05rem;
+      word-break: keep-all;
+    }
+
+    .btn-home {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: all 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .btn-home:hover {
+      background-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(92, 75, 250, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="success-container">
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+    </div>
+    <h1>요청이 성공적으로<br>접수되었습니다</h1>
+    <p>보내주신 수정 요청 사항을 꼼꼼히 검토한 후,<br>작성해주신 연락처로 빠르게 회신드리겠습니다.</p>
+
+    <!-- 본인의 랜딩페이지 메인 주소로 변경하세요 -->
+    <a href="https://codeworks.pages.dev/" class="btn-home">메인 홈페이지로 돌아가기</a>
+  </div>
+</body>
+
+</html>
