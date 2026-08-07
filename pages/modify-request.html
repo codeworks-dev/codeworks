@@ -63,13 +63,11 @@
       outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
     }
 
-    /* 기본 정보 행 그룹 스타일 */
     .form-row {
       display: flex; gap: 15px; margin-bottom: 30px;
     }
     .form-row .form-group { flex: 1; margin: 0; }
 
-    /* 동적 수정 항목 컨테이너 */
     .request-item {
       background: #fcfcfc; border: 1px solid #eee; border-radius: 12px;
       padding: 20px; margin-bottom: 20px; position: relative;
@@ -84,7 +82,6 @@
       border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;
     }
 
-    /* 드래그 앤 드롭 파일 업로드 영역 스타일 */
     .drop-zone {
       border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center;
       background-color: #fafafa; transition: all 0.2s; position: relative;
@@ -92,13 +89,10 @@
     .drop-zone.dragover {
       border-color: var(--color-primary); background-color: #f0f7ff;
     }
-    .drop-zone-prompt {
-      cursor: pointer;
-    }
+    .drop-zone-prompt { cursor: pointer; }
     .drop-zone-prompt p { margin: 0 0 5px 0; color: #555; font-size: 0.9rem; pointer-events: none; }
     .drop-zone input[type="file"] { display: none; }
 
-    /* 개별 파일 칩(Chip) 및 X 버튼 스타일 */
     .file-list {
       display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; justify-content: center;
     }
@@ -162,7 +156,8 @@
       </div>
 
       <div class="form-body">
-        <form id="modify-form" action="https://formspree.io/f/mrpzgroj" method="POST" enctype="multipart/form-data">
+        <!-- Forminit 표준 액션 URL 및 기본 POST 전송 방식 적용 -->
+        <form id="modify-form" action="https://forminit.com/f/5cbf6h7ff9u" method="POST" enctype="multipart/form-data">
           
           <div class="form-row">
             <div class="form-group">
@@ -189,7 +184,6 @@
                 <textarea name="Item1_Detail" rows="3" required placeholder="예: 현재 파란색 버튼을 딥 네이비색(#000080)으로 변경해 주세요."></textarea>
               </div>
               
-              <!-- 파일 드래그 앤 드롭 영역 -->
               <div class="form-group">
                 <label>참고 이미지 및 파일 첨부 (선택)</label>
                 <div class="drop-zone">
@@ -399,43 +393,12 @@
       }
     });
 
+    // 비동기 fetch를 제거하고 Forminit 표준 제출 방식으로 전환 완료
     const form = document.getElementById('modify-form');
-    const successMsg = document.getElementById('form-success');
-    const formContent = document.getElementById('form-content');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
+    form.addEventListener('submit', () => {
       const submitBtn = form.querySelector('.btn-submit');
-      const originalText = submitBtn.innerText;
-      submitBtn.innerText = '파일 및 요청사항 전송 중입니다...';
+      submitBtn.innerText = '전송 중입니다...';
       submitBtn.disabled = true;
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        
-        if (response.ok) {
-          formContent.style.display = 'none';
-          successMsg.style.display = 'block';
-          window.scrollTo(0,0);
-        } else if (response.status === 400) {
-          alert('전송 실패(400): 현재 연결된 Formspree 무료 요금제는 파일 첨부를 지원하지 않습니다. 텍스트로만 제출하시거나 유료 요금제로 업그레이드해 주세요.');
-          submitBtn.innerText = originalText;
-          submitBtn.disabled = false;
-        } else {
-          alert('오류가 발생했습니다. 다시 시도해 주세요.');
-          submitBtn.innerText = originalText;
-          submitBtn.disabled = false;
-        }
-      } catch (error) {
-        alert('네트워크 오류가 발생했습니다.');
-        submitBtn.innerText = originalText;
-        submitBtn.disabled = false;
-      }
     });
   </script>
 </body>
