@@ -324,11 +324,18 @@
           <div class="form-row">
             <div class="form-group">
               <label>고객명 (또는 기업명) <span style="color:red">*</span></label>
-              <input type="text" name="Client_Name" required placeholder="예: 홍길동">
+              <!-- Name 속성 수정: fi-sender-fullName -->
+              <input type="text" name="fi-sender-fullName" required placeholder="예: 홍길동">
+            </div>
+            <!-- 이메일 입력 필드 추가: fi-sender-email -->
+            <div class="form-group">
+              <label>이메일 (진행상황 안내용) <span style="color:red">*</span></label>
+              <input type="email" name="fi-sender-email" required placeholder="예: email@example.com">
             </div>
             <div class="form-group">
               <label>프로젝트명 <span style="color:red">*</span></label>
-              <input type="text" name="Project_Name" required placeholder="예: 기업홍보 랜딩페이지">
+              <!-- Name 속성 수정: fi-text- 접두사 -->
+              <input type="text" name="fi-text-Project_Name" required placeholder="예: 기업홍보 랜딩페이지">
             </div>
           </div>
 
@@ -339,11 +346,13 @@
               </div>
               <div class="form-group">
                 <label>페이지 및 위치 (어디를 고칠까요?)</label>
-                <input type="text" name="Item1_Location" required placeholder="예: 메인페이지 최상단 배너">
+                <!-- Name 속성 수정 -->
+                <input type="text" name="fi-text-Item1_Location" required placeholder="예: 메인페이지 최상단 배너">
               </div>
               <div class="form-group">
                 <label>변경 요청 사항 (어떻게 고칠까요?)</label>
-                <textarea name="Item1_Detail" rows="3" required
+                <!-- Name 속성 수정 -->
+                <textarea name="fi-text-Item1_Detail" rows="3" required
                   placeholder="예: 현재 파란색 버튼을 딥 네이비색(#000080)으로 변경해 주세요."></textarea>
               </div>
 
@@ -354,7 +363,8 @@
                     <p>📁 이곳을 클릭하거나 파일을 드래그하여 첨부해 주세요.</p>
                     <p style="font-size: 0.8rem; color:#888;">(개별 파일 5MB 이하, 이미지/압축파일 등)</p>
                   </div>
-                  <input type="file" name="Item1_File" multiple onchange="handleFileInputChange(this)">
+                  <!-- Name 속성 수정: fi-file- 접두사 -->
+                  <input type="file" name="fi-file-Item1_File" multiple onchange="handleFileInputChange(this)">
                   <div class="file-list"></div>
                 </div>
               </div>
@@ -405,11 +415,11 @@
         </div>
         <div class="form-group">
           <label>페이지 및 위치 (어디를 고칠까요?)</label>
-          <input type="text" name="Item${itemCount}_Location" required placeholder="예: 오시는 길 섹션">
+          <input type="text" name="fi-text-Item${itemCount}_Location" required placeholder="예: 오시는 길 섹션">
         </div>
         <div class="form-group">
           <label>변경 요청 사항 (어떻게 고칠까요?)</label>
-          <textarea name="Item${itemCount}_Detail" rows="3" required placeholder="상세히 적어주세요."></textarea>
+          <textarea name="fi-text-Item${itemCount}_Detail" rows="3" required placeholder="상세히 적어주세요."></textarea>
         </div>
         <div class="form-group">
           <label>참고 이미지 및 파일 첨부 (선택)</label>
@@ -418,7 +428,7 @@
               <p>📁 이곳을 클릭하거나 파일을 드래그하여 첨부해 주세요.</p>
               <p style="font-size: 0.8rem; color:#888;">(개별 파일 5MB 이하, 이미지/압축파일 등)</p>
             </div>
-            <input type="file" name="Item${itemCount}_File" multiple onchange="handleFileInputChange(this)">
+            <input type="file" name="fi-file-Item${itemCount}_File" multiple onchange="handleFileInputChange(this)">
             <div class="file-list"></div>
           </div>
         </div>
@@ -510,9 +520,9 @@
         const detailInput = item.querySelector('textarea[name*="_Detail"]');
         const fileInput = item.querySelector('input[type="file"]');
 
-        if (locationInput) locationInput.name = `Item${currentNum}_Location`;
-        if (detailInput) detailInput.name = `Item${currentNum}_Detail`;
-        if (fileInput) fileInput.name = `Item${currentNum}_File`;
+        if (locationInput) locationInput.name = `fi-text-Item${currentNum}_Location`;
+        if (detailInput) detailInput.name = `fi-text-Item${currentNum}_Detail`;
+        if (fileInput) fileInput.name = `fi-file-Item${currentNum}_File`;
 
         currentNum++;
       });
