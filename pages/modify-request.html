@@ -137,6 +137,7 @@
     }
 
     .form-group input[type="text"],
+    .form-group input[type="email"],
     .form-group textarea {
       width: 100%;
       padding: 14px 16px;
@@ -164,7 +165,7 @@
     /* 기본 정보 그리드 */
     .client-info-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
       margin-bottom: 36px;
       padding-bottom: 36px;
@@ -451,10 +452,17 @@
             <label>고객명 (또는 기업명) <span style="color:var(--color-danger)">*</span></label>
             <input type="text" name="fi-sender-fullName" required placeholder="예: 홍길동">
           </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label>이메일 <span style="color:#64748b;font-size:0.85em;">(선택)</span></label>
+            <input type="email" name="fi-sender-email" placeholder="example@email.com">
+          </div>
+
           <div class="form-group" style="margin-bottom:0;">
             <label>연락받으실 연락처 <span style="color:var(--color-danger)">*</span></label>
-            <input type="text" name="fi-text-Contact_Info" required placeholder="이메일, 카톡 ID, 전화번호 등">
+            <input type="text" name="fi-text-Contact_Info" required placeholder="예: 010-1234-5678 또는 카카오톡 ID(codeworks)">
           </div>
+
           <div class="form-group" style="margin-bottom:0;">
             <label>프로젝트명 <span style="color:var(--color-danger)">*</span></label>
             <input type="text" name="fi-text-Project_Name" required placeholder="예: 기업홍보 랜딩페이지">
