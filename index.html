@@ -18,8 +18,8 @@
   <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <script type="module" crossorigin src="./assets/main-DUTGBJu7.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-D-OSS6sX.css">
+  <script type="module" crossorigin src="./assets/main-BKUdgcr-.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-DT9NfomX.css">
 </head>
 
 <body>
@@ -86,8 +86,15 @@
         <div class="hero__visual reveal-up delay-200">
           <div class="visual-orb"></div>
           <div class="visual-card glass">
+            <!-- 💡 수정: 뻔한 신호등 대신 개발 스튜디오 느낌의 미니멀 코드 탭 도입 -->
             <div class="vc-header">
-              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <div class="vc-tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <span>index.html</span>
+              </div>
             </div>
             <div class="vc-body">
               <div class="vc-line title"></div>
@@ -236,8 +243,9 @@
           <article class="portfolio__item reveal-up">
             <div class="portfolio__mockup">
               <div class="mockup-header">
+                <!-- 💡 수정: 알록달록한 신호등을 빼고 모노톤의 고급스러운 닷(Dot)으로 변경 -->
                 <div class="mockup-header__dots">
-                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  <span class="dot mono"></span><span class="dot mono"></span><span class="dot mono"></span>
                 </div>
                 <div class="portfolio__meta">
                   <span class="meta-label">Lighthouse</span>성능 96 · 접근성 98 · SEO 100
@@ -266,7 +274,7 @@
             <div class="portfolio__mockup">
               <div class="mockup-header">
                 <div class="mockup-header__dots">
-                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  <span class="dot mono"></span><span class="dot mono"></span><span class="dot mono"></span>
                 </div>
                 <div class="portfolio__meta">
                   <span class="meta-label">Lighthouse</span>성능 100 · 접근성
@@ -297,7 +305,7 @@
             <div class="portfolio__mockup">
               <div class="mockup-header">
                 <div class="mockup-header__dots">
-                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  <span class="dot mono"></span><span class="dot mono"></span><span class="dot mono"></span>
                 </div>
                 <div class="portfolio__meta">
                   <span class="meta-label">Lighthouse</span>성능 96 · 접근성
@@ -327,7 +335,7 @@
             <div class="portfolio__mockup">
               <div class="mockup-header">
                 <div class="mockup-header__dots">
-                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  <span class="dot mono"></span><span class="dot mono"></span><span class="dot mono"></span>
                 </div>
                 <div class="portfolio__meta">
                   <span class="meta-label">Lighthouse</span>성능 90 · 접근성
@@ -358,7 +366,7 @@
             <div class="portfolio__mockup">
               <div class="mockup-header">
                 <div class="mockup-header__dots">
-                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  <span class="dot mono"></span><span class="dot mono"></span><span class="dot mono"></span>
                 </div>
                 <div class="portfolio__meta">
                   <span class="meta-label">Lighthouse</span>성능 97 · 접근성
@@ -833,9 +841,16 @@
             </div>
           </div>
 
+          <!-- 💡 수정: "받아 받아보기" 오타 수정 및 로켓 이모지 🚀 대신 프리미엄 라인 SVG 아이콘 삽입 -->
           <button type="submit" class="btn-primary w-100 btn-shine"
-            style="margin-top: 15px; padding: 15px; font-size: 1.1rem;">
-            <span>빠른 견적 받아 받아보기 🚀</span>
+            style="margin-top: 15px; padding: 15px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span style="display: flex; align-items: center; gap: 8px;">무료 견적 받아보기
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </span>
           </button>
         </form>
 
