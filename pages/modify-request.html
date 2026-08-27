@@ -362,6 +362,66 @@
       transform: none;
     }
 
+    /* 개인정보 동의 영역 */
+    .consent-section {
+      margin: 0 0 24px;
+      padding: 22px;
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+    }
+
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: #334155;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .consent-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 2px 0 0;
+      flex: 0 0 auto;
+      accent-color: var(--color-primary);
+    }
+
+    .consent-detail {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--color-text-muted);
+      font-size: 0.86rem;
+      line-height: 1.7;
+    }
+
+    .consent-detail summary {
+      cursor: pointer;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .consent-detail-inner {
+      margin-top: 10px;
+    }
+
+    .consent-policy-link {
+      margin: 10px 0 0;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+    }
+
+    .consent-policy-link a {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
     /* 푸터 */
     .site-footer {
       background-color: var(--color-bg-dark);
@@ -436,9 +496,8 @@
         <ul class="notice-list">
           <li><b>통합 접수 권장:</b> 제출 버튼을 누르시기 전, 여러 항목을 [ + 수정 사항 추가하기 ] 버튼으로 수정하고 싶은 부분을 모두 기재해 주세요.</li>
           <li><b>작업 범위 안내:</b> 사전에 협의되지 않은 임의의 기능/레이아웃 추가는 접수되지 않으며 별도의 상담을 통해 수정을 도와드리고 있습니다.</li>
-          <li><b>파일 첨부 안내:</b> 참고 이미지나 홈페이지 파일은 하단 영역에 <b>ZIP 파일(최대 20MB) 1개</b>로 묶어 첨부해 주시고, 20MB 초과 시 공유 링크(구글 드라이브
-            등)를
-            남겨주시기 바랍니다.</li>
+          <li><b>파일 첨부 안내:</b> 참고 이미지나 홈페이지 파일은 하단 영역에 <b>ZIP 파일(최대 20MB) 1개</b>로 묶어 첨부해 주시고, 20MB 초과 시 공유 링크(구글 드라이브 등)를 남겨주시기 바랍니다.</li>
+          <li><b>보안 안내:</b> ZIP 파일에는 <b>.env, API Key/Secret, 서버·FTP·SSH·DB 비밀번호, 결제정보 등 인증·민감정보를 포함하지 마세요.</b> 필요한 계정 접근은 별도의 안전한 방식으로 안내드립니다.</li>
         </ul>
       </div>
 
@@ -497,10 +556,54 @@
             <div class="drop-zone-icon">📁</div>
             <div style="font-weight: 600; margin-bottom: 4px;">클릭하거나 파일을 드래그 앤 드롭 하세요.</div>
             <div style="font-size: 0.85rem; color: #94a3b8;">(ZIP 압축파일 1개 / 최대 20MB 이하)</div>
-            <input type="file" id="global-file" name="fi-file-Global_Attachment" onchange="handleGlobalFile(this)">
+            <input type="file" id="global-file" name="fi-file-Global_Attachment" accept=".zip,application/zip,application/x-zip-compressed" onchange="handleGlobalFile(this)">
           </div>
           <div id="global-file-list" style="text-align: center;"></div>
         </div>
+
+        <!-- 개인정보 수집·이용 동의 -->
+        <section class="consent-section" aria-labelledby="privacy-consent-title">
+          <label class="consent-row" id="privacy-consent-title">
+            <input type="checkbox" name="fi-checkbox-Privacy_Consent" value="동의" required>
+            <span><strong>[필수]</strong> 개인정보 수집·이용에 동의합니다.</span>
+          </label>
+
+          <details class="consent-detail">
+            <summary>개인정보 수집·이용 내용 보기</summary>
+            <div class="consent-detail-inner">
+              <strong>수집·이용 목적:</strong> 수정 요청 접수, 고객·프로젝트 확인, 작업 범위 검토, 수정 진행 및 A/S 관련 연락<br>
+              <strong>수집 항목:</strong> 고객명 또는 기업명, 연락처, 이메일(선택), 프로젝트명, 수정 요청 내용, 고객이 첨부한 ZIP 파일 및 공유 링크<br>
+              <strong>보유 기간:</strong> 수정 요청 처리 및 프로젝트/A/S 목적 달성 후 최대 6개월 이내 삭제를 기본으로 합니다. 다만 계약·분쟁 대응 또는 관계 법령상 보존이 필요한 기록은 필요한 범위에서 별도 보관할 수 있습니다.<br>
+              <strong>동의 거부:</strong> 동의를 거부할 수 있으나, 이 경우 본 수정요청서를 통한 접수가 어렵습니다.
+            </div>
+          </details>
+        </section>
+
+        <!-- Forminit 국외 이전 별도 동의 -->
+        <section class="consent-section" aria-labelledby="overseas-consent-title">
+          <label class="consent-row" id="overseas-consent-title">
+            <input type="checkbox" name="fi-checkbox-Overseas_Transfer_Consent" value="동의" required>
+            <span><strong>[필수]</strong> Forminit을 통한 개인정보 및 첨부파일의 국외 이전에 동의합니다.</span>
+          </label>
+
+          <details class="consent-detail">
+            <summary>국외 이전 내용 보기</summary>
+            <div class="consent-detail-inner">
+              <strong>이전되는 개인정보:</strong> 수정요청서에 입력한 고객·연락 정보, 프로젝트명, 수정 요청 내용, 첨부파일 및 서비스 처리 과정에서 생성되는 기술정보<br>
+              <strong>이전 국가:</strong> 아일랜드(EU)<br>
+              <strong>이전받는 자:</strong> UXPLUS LTD (Forminit, info@forminit.com)<br>
+              <strong>이전 시기 및 방법:</strong> 고객이 수정요청서를 제출할 때 암호화된 HTTPS 통신으로 전송<br>
+              <strong>이용 목적:</strong> 수정 요청 데이터와 첨부파일의 수신·저장·전달, 서비스 운영 및 보안<br>
+              <strong>보유·이용 기간:</strong> CODE WORKS는 처리 목적 달성 후 최대 6개월 이내 삭제를 원칙으로 관리합니다. Forminit에서 제출 데이터를 삭제하면 운영 시스템에서 제거되며, 백업 데이터는 최대 35일 이내 만료될 수 있습니다.<br>
+              <strong>동의 거부:</strong> 국외 이전에 동의하지 않을 수 있습니다. 이 경우 본 웹 수정요청서는 이용할 수 없으며, KakaoTalk <strong>@codeworks</strong>로 수정 요청 방법을 문의해 주세요.
+            </div>
+          </details>
+
+          <p class="consent-policy-link">
+            자세한 내용은 CODE WORKS
+            <a href="../pages/privacy.html" target="_blank" rel="noopener noreferrer">개인정보처리방침</a>에서 확인할 수 있습니다.
+          </p>
+        </section>
 
         <!-- 초기 렌더링 시에는 텍스트만 둡니다. -->
         <button type="submit" class="btn-submit">수정 요청사항 제출하기 🚀</button>
@@ -570,14 +673,23 @@
       }
 
       if (newFiles.length === 1) {
-        if (newFiles[0].size > MAX_SIZE) {
+        const selectedFile = newFiles[0];
+        const isZip = selectedFile.name.toLowerCase().endsWith('.zip');
+
+        if (!isZip) {
+          alert("⚠️ 첨부파일은 ZIP 압축파일(.zip) 1개만 등록할 수 있습니다.\n여러 파일은 하나의 ZIP 파일로 묶어 주세요.");
+          input.value = "";
+          return;
+        }
+
+        if (selectedFile.size > MAX_SIZE) {
           alert(`⚠️ 파일 용량이 20MB를 초과했습니다.\n\n포미닛 서버 안정성을 위해 20MB 이하 파일만 첨부 가능합니다.\n용량이 큰 경우 구글 드라이브/MyBox 등 공유 링크를 '변경 요청 사항' 칸에 남겨주세요!`);
           input.value = "";
           return;
         }
 
         globalFileStore = new DataTransfer();
-        globalFileStore.items.add(newFiles[0]);
+        globalFileStore.items.add(selectedFile);
         updateGlobalFileUI();
       }
     }
