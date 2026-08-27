@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CODE WORKS 웹 퍼블리싱 서비스 취소 및 환불정책">
   <title>환불정책 | CODE WORKS</title>
+
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
@@ -15,10 +17,11 @@
 <body>
   <header class="header scrolled">
     <a href="../index.html" class="header__logo">CODE WORKS</a>
+
     <div class="header__actions">
-      <button class="theme-toggle" aria-label="다크모드 전환" id="theme-toggle-btn">
+      <button class="theme-toggle" aria-label="다크모드 전환" id="theme-toggle-btn" type="button">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="5"></circle>
           <line x1="12" y1="1" x2="12" y2="3"></line>
           <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -29,8 +32,9 @@
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
+
         <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          stroke-linecap="round" stroke-linejoin="round" style="display: none;" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
@@ -41,58 +45,172 @@
     <h1>환불정책</h1>
 
     <div class="legal-content">
+      <p style="margin-bottom: 32px; color: var(--color-text-sub);">
+        시행일: 2026년 8월 28일
+      </p>
 
-      <h3>제 1조 (환불의 원칙)</h3>
-      <p>본 서비스는 의뢰인(고객)의 요구사항에 맞춘 무형의 맞춤형(커스텀) 디지털 산출물을 제작하는 용역 서비스로, 작업 착수 이후에는 원칙적으로 전액 환불이 불가합니다.</p>
+      <h3>제 1조 (기본 원칙)</h3>
+      <p>
+        CODE WORKS의 웹 퍼블리싱 서비스는 고객의 요구사항에 맞추어
+        개별 제작되는 용역입니다.
+        취소 및 환불은 일률적인 "작업기간 절반" 계산식이 아니라
+        실제 작업 착수 여부, 완료된 작업과 마일스톤,
+        고객 승인 후 발생한 외부 비용, 거래가 이루어진 플랫폼의 정책 및
+        관계 법령을 함께 고려하여 처리합니다.
+      </p>
 
-      <h3>제 2조 (작업 기간에 따른 환불 규정)</h3>
-      <p>주관적인 진척도가 아닌, 사전에 협의된 <strong>'전체 예정 작업 기간'</strong>을 기준으로 객관적인 환불 규정을 적용합니다.</p>
+      <h3>제 2조 (적용 순서)</h3>
       <ul>
-        <li><strong>결제 완료 후 ~ 개발(작업) 착수 전 :</strong> 총 결제 금액의 100% 환불 (전액 환불)</li>
-        <li><strong>개발 착수 후 ~ 전체 예정 작업 기간의 1/2 경과 전 :</strong> 총 결제 금액의 50% 환불<br>
-          <span style="font-size: 0.9rem; color: var(--color-text-sub);">※ 이 경우, 해당 시점까지 진행된 부분 산출물(소스 코드)을 고객에게
-            제공합니다.</span>
+        <li>
+          소비자 보호 등 관계 법령상 강행규정이 적용되는 경우 해당 법령을 우선합니다.
         </li>
-        <li><strong>전체 예정 작업 기간의 1/2 경과 후 ~ 완료 단계 :</strong> 환불 불가</li>
-      </ul>
-
-      <div
-        style="background-color: var(--color-bg-alt); padding: 24px; border-radius: var(--radius-sm); margin: 24px 0; border: 1px solid var(--color-border);">
-        <h4 style="margin-top: 0; color: var(--color-primary); font-size: 1.1rem; margin-bottom: 16px;">💡 [예시] 50% 환불
-          가능 기한 계산법</h4>
-        <p style="margin-bottom: 10px; font-size: 0.95rem;"><strong>• 전체 예정 작업 기간 :</strong> 총 10일 (240시간)</p>
-        <p style="margin-bottom: 10px; font-size: 0.95rem;"><strong>• 작업 착수 일시 :</strong> 2026년 8월 1일 오전 10시</p>
-        <p style="margin-bottom: 10px; font-size: 0.95rem;"><strong>• 최종 마감 일시 :</strong> 2026년 8월 11일 오전 10시</p>
-        <hr style="border: 0; border-top: 1px dashed var(--color-border); margin: 16px 0;">
-        <p style="margin-bottom: 10px; font-size: 1rem; font-weight: 700; ;">👉 50% 환불 요청
-          마감 기한 (1/2 경과 전) : <br> 2026년 8월 6일 오전 10시 정각까지</p>
-       
-      </div>
-
-      <h3>제 3조 (작업 착수 기준 및 고객 귀책으로 인한 일정 지연)</h3>
-      <ul>
-        <li><strong>작업 착수 기준일 :</strong> 작업 착수일은 단순히 '결제일'이 아니라, 결제 완료 후 <strong>'퍼블리싱에 필요한 모든 최종 자료(피그마 시안, 이미지, 텍스트
-            등)를 온전히 전달받은 시점'</strong>을 기준으로 산정합니다.</li>
-        <li><strong>일정 지연 및 추가 요금 :</strong> 작업 기간 중 고객의 피드백 지연(24시간 이상 무응답) 또는 사전에 협의되지 않은 기획/디자인의 대대적인 변경 요구로 인해 작업
-          기간이 초과되는 경우, 이는 작업자의 귀책사유가 아니므로 환불 대상에서 제외되며 불가피하게 추가금이 발생할 수 있습니다.</li>
-        <li><strong>연락 두절(잠수) :</strong> 고객이 정당한 사유 없이 <strong>영업일 기준 3일(72시간) 이상</strong> 연락이 두절되어 프로젝트 진행이 불가능한 경우,
-          작업자는 프로젝트를 임의 종료할 수 있으며 이 경우 환불은
-          불가합니다.</li>
-      </ul>
-
-      <h3>제 4조 (작업자 귀책사유로 인한 환불)</h3>
-      <ul>
-        <li>작업자의 명백한 기술적 과실, 사전 협의 없는 중대한 요건 누락, 또는 작업자의 일방적인 연락 두절 및 기한 위반으로 인해 프로젝트를 정상적으로 런칭할 수 없는 경우, 진행 기간과 무관하게
-          <strong>전액(100%) 환불</strong>을 진행합니다.
+        <li>
+          숨고 등 플랫폼을 통한 거래에 별도의 취소·환불·분쟁처리 규정이
+          적용되는 경우 해당 절차를 함께 따릅니다.
+        </li>
+        <li>
+          그 밖의 사항은 고객과 개별적으로 합의한 Scope·특약,
+          전자계약서, 최종 견적서 및 본 정책을 종합하여 판단합니다.
         </li>
       </ul>
+
+      <h3>제 3조 (작업 착수 전 취소)</h3>
+      <ul>
+        <li>
+          계약은 완료되었으나 실제 작업이 착수되지 않은 상태에서
+          고객이 취소하는 경우, 원칙적으로 이미 지급받은 작업대금은 환급합니다.
+        </li>
+        <li>
+          다만 고객의 사전 승인을 받아 이미 구매·결제되어 회수가 불가능한
+          도메인, 유료 에셋, 외부 서비스 등 직접비용이 있는 경우에는
+          관계 법령이 허용하는 범위에서 해당 비용의 처리 방법을 고객과 협의합니다.
+        </li>
+      </ul>
+
+      <h3>제 4조 (작업 착수 후 고객 사정에 의한 중도 종료)</h3>
+      <ul>
+        <li>
+          작업 착수 이후 고객 사정으로 프로젝트가 중도 종료되는 경우
+          실제 완료된 작업, 합의된 마일스톤, 확정된 산출물 및
+          고객 승인 후 발생한 직접비용을 기준으로 기작업분을 산정합니다.
+        </li>
+        <li>
+          이미 지급받은 금액 중 미수행 부분에 해당하는 금액이 있는 경우에는
+          계약 내용과 관계 법령에 따라 정산합니다.
+        </li>
+        <li>
+          단순히 전체 예정기간의 몇 퍼센트가 지났는지만으로
+          환불액을 자동 결정하지 않습니다.
+        </li>
+      </ul>
+
+      <h3>제 5조 (마일스톤을 정한 프로젝트)</h3>
+      <p>
+        규모가 큰 프로젝트는 계약 또는 Scope에서 작업 단계를
+        마일스톤으로 구분할 수 있습니다.
+        예를 들어 초기 세팅, PC 퍼블리싱, 반응형·인터랙션,
+        QA·납품 등의 단계를 정하고 각 단계의 완료 기준이나
+        금액 비중을 합의할 수 있습니다.
+        중도 종료 시에는 실제로 완료된 마일스톤을
+        기작업분 판단의 근거로 사용할 수 있습니다.
+      </p>
+
+      <h3>제 6조 (전자상거래법상 소비자 거래)</h3>
+      <ul>
+        <li>
+          해당 거래가 「전자상거래 등에서의 소비자보호에 관한 법률」이
+          적용되는 통신판매에 해당하는 경우에는 고객에게 법률상 보장되는
+          청약철회 및 환불 권리를 본 정책으로 제한하지 않습니다.
+        </li>
+        <li>
+          법령상 일정 기간 안에 청약철회가 가능한 경우가 있으며,
+          용역 제공이 이미 개시된 경우에는 법정 요건에 따라
+          청약철회가 제한될 수 있습니다.
+        </li>
+        <li>
+          가분적인 용역의 경우 이미 제공이 시작된 부분과
+          아직 제공되지 않은 부분의 취급이 달라질 수 있으므로
+          실제 계약 형태와 진행 상황에 따라 판단합니다.
+        </li>
+      </ul>
+
+      <h3>제 7조 (CODE WORKS의 귀책으로 정상적인 이행이 어려운 경우)</h3>
+      <ul>
+        <li>
+          작업자의 명백한 기술적 과실이나 중대한 계약위반이 발생한 경우
+          먼저 합리적인 기간 안에 수정 또는 이행을 시도합니다.
+        </li>
+        <li>
+          중대한 계약위반이 해소되지 않아 프로젝트 목적을 달성하기 어려운 경우에는
+          미이행 부분의 환급, 계약 종료 등 필요한 조치를 고객과 협의하고
+          관계 법령 및 계약 내용에 따라 처리합니다.
+        </li>
+        <li>
+          경미하고 수정 가능한 버그가 있다는 이유만으로
+          이미 정상적으로 수행된 모든 작업대금을 일률적으로
+          전액 환불하는 것을 기본 정책으로 두지 않습니다.
+        </li>
+      </ul>
+
+      <h3>제 8조 (자료 및 피드백 지연)</h3>
+      <ul>
+        <li>
+          고객의 자료 제공 또는 피드백이 늦어지는 경우
+          그 기간만큼 전체 일정이 순연될 수 있습니다.
+        </li>
+        <li>
+          영업일 3일 이상 회신이 없는 경우 작업자는 진행 여부를 확인할 수 있고,
+          계속해서 회신이 없으면 프로젝트 일정을 일시 정지할 수 있습니다.
+        </li>
+        <li>
+          영업일 7일 이상 장기 연락두절로 정상적인 진행이 어려운 경우
+          계약의 지속 또는 종료 여부를 재확인합니다.
+        </li>
+        <li>
+          연락두절만을 이유로 자동으로 "환불 불가" 처리하지 않으며,
+          계약 내용과 실제 진행된 작업을 기준으로 정산합니다.
+        </li>
+      </ul>
+
+      <h3>제 9조 (작업범위 변경)</h3>
+      <p>
+        프로젝트 진행 중 고객이 신규 페이지, 새로운 기능,
+        레이아웃 전면 변경 등 기존 Scope를 벗어나는 작업을 요청하는 경우
+        기존 계약의 취소가 아니라 추가 견적 또는 계약 변경으로
+        처리하는 것을 원칙으로 합니다.
+      </p>
+
+      <h3>제 10조 (환불 요청 방법)</h3>
+      <p>
+        취소 또는 환불 요청은 프로젝트명과 요청 사유를 포함하여
+        <a href="mailto:mail.codeworks@gmail.com">
+          <strong>mail.codeworks@gmail.com</strong>
+        </a>
+        또는 계약에 사용한 플랫폼의 공식 채팅·분쟁 절차를 통해
+        요청할 수 있습니다.
+      </p>
+
+      <h3>제 11조 (환급 시기)</h3>
+      <p>
+        환급이 확정된 경우에는 관계 법령 또는 사용한 결제 플랫폼의
+        정산·환불 일정에 따라 처리합니다.
+        법령상 별도의 환급기한이 적용되는 거래에는 해당 법정기한을 따릅니다.
+      </p>
+
+      <h3>제 12조 (정책 변경)</h3>
+      <p>
+        본 정책을 변경하는 경우 변경일과 시행일을 표시합니다.
+        이미 체결된 프로젝트에는 원칙적으로 해당 프로젝트 계약 당시 적용된
+        계약내용과 정책을 기준으로 합니다.
+      </p>
 
       <div class="legal-footer">
         <button onclick="window.history.length > 1 ? history.back() : window.location.href='../index.html'"
           class="btn-secondary btn-shine"
-          style="display: inline-flex; align-items: center; gap: 8px; border: none; font-family: inherit; cursor: pointer;">
+          style="display: inline-flex; align-items: center; gap: 8px; border: none; font-family: inherit; cursor: pointer;"
+          type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" style="width: 18px; height: 18px;">
+            stroke-linejoin="round" style="width: 18px; height: 18px;" aria-hidden="true">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
@@ -104,8 +222,10 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer__bottom" style="border:none; padding:0; justify-content:center;">
-        <p class="footer__copyright">Coptrights © CODE WORKS. All rights reserved.</p>
+      <div class="footer__bottom" style="border: none; padding: 0; justify-content: center;">
+        <p class="footer__copyright">
+          Copyright © CODE WORKS. All rights reserved.
+        </p>
       </div>
     </div>
   </footer>
